@@ -10,12 +10,28 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    
+    var todoItems = ["king", "queen", "princess", "prince", "lord"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-   
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print ("able to do xcode completion when start typing tableview... and todoItems.count = ", todoItems.count)
+        return todoItems.count 
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+    
+        cell.textLabel?.text = todoItems[indexPath.row]
+        return cell
+        
+    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    }
 
 }
 
