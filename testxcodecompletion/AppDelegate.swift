@@ -7,14 +7,33 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //... start git save 1:40 pm
+        print("where Realm db located ",Realm.Configuration.defaultConfiguration.fileURL)
+        
+        // add this debug code just for Realm to create our database
+        let data = Data()
+        data.name = "Brat"
+        data.age = 30
+
+        do {
+        let realm = try Realm()
+            try realm.write {
+                realm.add(data)
+            }
+        } catch {
+            print ("error initialize Realm database, \(error)" )
+        }
+        
+        //... done git save 1:40 pm
+
         return true
     }
 
