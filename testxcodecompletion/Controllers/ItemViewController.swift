@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class ItemViewController: UITableViewController {
 
     
     var todoItems = ["king", "queen", "princess", "prince", "lord"]

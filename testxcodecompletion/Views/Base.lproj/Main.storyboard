@@ -9,7 +9,7 @@
         <!--testxcode-->
         <scene sceneID="1eV-64-tsm">
             <objects>
-                <tableViewController id="m6Y-KG-VAN" customClass="TableViewController" customModule="testxcodecompletion" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="m6Y-KG-VAN" customClass="ItemViewController" customModule="testxcodecompletion" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g22-Bk-vPT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
