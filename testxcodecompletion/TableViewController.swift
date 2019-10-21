@@ -24,8 +24,9 @@ class TableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-    
+        // let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        
         cell.textLabel?.text = todoItems[indexPath.row]
         return cell
         
