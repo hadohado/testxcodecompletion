@@ -47,7 +47,12 @@ class CategoryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 'UITableView dataSource returned a nil cell for row at index path: <NSIndexPath: 0xde6b95d812be4639>
         print("start 1 tableView cellForRowAt ...........................")
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        // next line causes problem !!!
+        // let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        //..............................
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         print("start 2 tableView cellForRowAt ...........................")
         if let category = categories?[indexPath.row] {
             print("start indexPath.row tableView cellForRowAt, ", indexPath.row, ".....")
