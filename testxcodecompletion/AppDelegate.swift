@@ -28,13 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        data.age = 30
 
         do {
-        let realm = try Realm()
-//            try realm.write {
-//                realm.add(data)
-//            }
+            _ = try Realm()
         } catch {
-            print ("error initialize Realm database, \(error)" )
+            print("Error initialising new realm, \(error)")
         }
+
+//        do {
+//        let realm = try Realm()
+//              //  try realm.write { realm.add(data) }
+//        } catch {
+//            print ("error initialize Realm database, \(error)" )
+//        }
         
 //... done git save 1:40 pm
 

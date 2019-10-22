@@ -29,7 +29,13 @@
                             <outlet property="delegate" destination="m6Y-KG-VAN" id="UV2-PK-rZv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="testxcode" id="IwN-Bv-BZ9"/>
+                    <navigationItem key="navigationItem" title="testxcode" id="IwN-Bv-BZ9">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="bKy-Kw-sHR">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="m6Y-KG-VAN" id="9Os-Hz-ynv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KjK-Zy-apj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,4 +61,7 @@
             <point key="canvasLocation" x="792.75362318840587" y="119.86607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
