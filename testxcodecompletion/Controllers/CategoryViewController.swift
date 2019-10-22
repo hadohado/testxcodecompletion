@@ -45,9 +45,15 @@ class CategoryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 'UITableView dataSource returned a nil cell for row at index path: <NSIndexPath: 0xde6b95d812be4639>
+        print("start 1 tableView cellForRowAt ...........................")
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        print("start 2 tableView cellForRowAt ...........................")
         if let category = categories?[indexPath.row] {
+            print("start indexPath.row tableView cellForRowAt, ", indexPath.row, ".....")
+            print("tableView cellForRowAt category.name = ", category.name)
             cell.textLabel?.text = category.name
+            print("cell = ", cell.textLabel) // this print nil
             // guard let categoryColour = UIColor(named: category.colour) else {fatalError()}
             // cell.backgroundColor = categoryColour
             // cell.textLabel?.textColor = UIColor.green
@@ -88,15 +94,20 @@ class CategoryViewController: UITableViewController {
     
     func loadCategories() {
         categories  = realm.objects(Category.self)
+        print("loadCategories() tableView.reloadData() start .........")
         tableView.reloadData()
+        print("loadCategories() tableView.reloadData() done ..........")
     }
+
     
     //MARK: - Data Manipulation Methods
     func save(category: Category) {
         do {
             try realm.write { realm.add(category) }
         } catch { print("Error saving category \(error)") }
+        print("save() tableView.reloadData() start ..............")
         tableView.reloadData()
+        print("save() tableView.reloadData() done................")
     }
     
     
