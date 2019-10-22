@@ -20,51 +20,33 @@ class CategoryViewController: UITableViewController {
     
     var categories: Results<Category>?
     
-    var todoItems = ["king", "queen", "princess", "prince", "lord"]
+    // old hard-code stuff, I was able to display these on phone
+    // var todoItems = ["king", "queen", "princess", "prince", "lord"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCategories()  //    <--- NEED THIS to load previous Category database
-        // Do any additional setup after loading the view.
         
+        // Do any additional setup after loading the view.
+        loadCategories()  // <--- NEED THIS to load previous Category database
     }
 
-/* old code to populate phone table with hard-code things
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print ("able to do xcode completion when start typing tableview... and todoItems.count = ", todoItems.count)
-        return todoItems.count 
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        
-        cell.textLabel?.text = todoItems[indexPath.row]
-        return cell
-    }
-*/
+    
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("tableView number or rows = ", categories?.count ?? 1)
-        // it prints nil !!!
+        // print("tableView number or rows = ", categories?.count ?? 1)
         return categories?.count ?? 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 'UITableView dataSource returned a nil cell for row at index path: <NSIndexPath: 0xde6b95d812be4639>
-        print("start 1 tableView cellForRowAt ...........................")
         
-        // next line causes problem !!!
+        // next line causes problem !!! ................................
+        // 'UITableView dataSource returned a nil cell for row at index path: <NSIndexPath: 0xde6b95d812be4639>
         // let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        //..............................
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        print("start 2 tableView cellForRowAt ...........................")
         if let category = categories?[indexPath.row] {
-            print("start indexPath.row tableView cellForRowAt, ", indexPath.row, ".....")
-            print("tableView cellForRowAt category.name = ", category.name)
             cell.textLabel?.text = category.name
-            print("cell = ", cell.textLabel) // this print nil
-            // guard let categoryColour = UIColor(named: category.colour) else {fatalError()}
+            // guard let categoryColour = UIColor(named: category.colour) else {print("error") }
             // cell.backgroundColor = categoryColour
             // cell.textLabel?.textColor = UIColor.green
         }
@@ -104,23 +86,30 @@ class CategoryViewController: UITableViewController {
     
     func loadCategories() {
         categories  = realm.objects(Category.self)
-        print("loadCategories() tableView.reloadData() start .........")
         tableView.reloadData()
-        print("loadCategories() tableView.reloadData() done ..........")
     }
-
     
     //MARK: - Data Manipulation Methods
     func save(category: Category) {
         do {
             try realm.write { realm.add(category) }
         } catch { print("Error saving category \(error)") }
-        print("save() tableView.reloadData() start ..............")
         tableView.reloadData()
-        print("save() tableView.reloadData() done................")
     }
     
-    
+    /* old code to populate phone table with hard-code things
+        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            print ("able to do xcode completion when start typing tableview... and todoItems.count = ", todoItems.count)
+            return todoItems.count
+        }
+        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            // let cell = super.tableView(tableView, cellForRowAt: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+            
+            cell.textLabel?.text = todoItems[indexPath.row]
+            return cell
+        }
+    */
     
 }
 
