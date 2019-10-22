@@ -14,13 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-//... start git save 1:40 pm
-        
+                
         // I successfully run this code
         // I can see "Brat  30" data in Realm database
         
-        print("where Realm db located ",Realm.Configuration.defaultConfiguration.fileURL)
+        // print("where Realm db located ",Realm.Configuration.defaultConfiguration.fileURL)
         
         // add this debug code just for Realm to create our database
 //        let data = Data()
@@ -40,8 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print ("error initialize Realm database, \(error)" )
 //        }
         
-//... done git save 1:40 pm
-
         return true
     }
 
