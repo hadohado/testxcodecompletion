@@ -11,6 +11,11 @@ import RealmSwift
 
 class CategoryViewController: UITableViewController {
 
+    //-----------------------
+    // this works can write to Realm database and read back
+    // to display on phone
+    //----------------------
+    
     let realm = try! Realm()
     
     var categories: Results<Category>?
